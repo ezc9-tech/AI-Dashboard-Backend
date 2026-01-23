@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: insighthub-postgres
+    restart: always
+    environment:
+      POSTGRES_USER: insighthub
+      POSTGRES_PASSWORD: insighthub
+      POSTGRES_DB: insighthub
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

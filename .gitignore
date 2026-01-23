@@ -1,3 +1,32 @@
+# Docker / Postgres data
+docker-compose.override.yml
+docker/.env
+docker/.env.*   # if you use any Docker env files
+*.sqlite        # if you ever test SQLite locally
+
+# Prisma migrations (optional, if you don’t want to commit them)
+prisma/migrations/
+
+# Prisma client output (you already have this)
+src/generated/prisma/
+
+# Logs / temporary test files
+*.seed.ts       # if you create seed scripts
+
+# IDE/editor
+.idea/
+*.code-workspace
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Compiled JS output
+dist/
+build/
+
+
 # Logs
 logs
 *.log
@@ -137,3 +166,5 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+/src/generated/prisma
