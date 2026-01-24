@@ -1,20 +1,14 @@
 import express from "express";
-import cors from 'cors';
+import authRoutes from "./modules/auth/auth.routes";
 
-const app = express()
-const port = 3000
+const app = express();
 
-app.use(cors());
 app.use(express.json());
 
+app.use("/auth", authRoutes);
 
-app.get('/', (req: any, res: any) => {
-  res.send('Hello World!')
-})
+app.get("/health", (_req, res) => {
+  res.json({ status: "ok" });
+});
 
-app.get('/health', (req: any, res: any) => {
-  res.send('health information!')
-})
-
-
-export default app
+export default app;
