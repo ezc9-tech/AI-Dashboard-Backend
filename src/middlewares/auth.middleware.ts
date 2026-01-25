@@ -1,8 +1,13 @@
 import {Request, Response, NextFunction} from "express"
 import { verifyToken } from "../utils/jwt"
 
+export interface JwtUser {
+    userId: number;
+    role: "USER" | "ADMIN";
+}
+
 export interface AuthRequest extends Request {
-    user?: any
+    user?: JwtUser
 }
 
 export const requireAuth = (req: AuthRequest, res: Response, next: NextFunction) => {
@@ -14,7 +19,7 @@ export const requireAuth = (req: AuthRequest, res: Response, next: NextFunction)
 
     try {
         const token = header.split(" ")[1];
-        const decoded = verifyToken(token);
+        const decoded = verifyToken(token) as JwtUser;
         req.user = decoded;
         next();
     } catch (error) {
